@@ -8,7 +8,8 @@ function solution(today, terms, privacies) {
         acc[dateSplited[0]] = +dateSplited[1]*28
         return acc 
         },{});
-    
+        
+    // 2. privacies에서 현재날짜에서 곱한 28*개월 수를 카운트한다. 카운트한 숫자를 확인하면서 날짜를 올린다.
     const dateCalculated = privacies.map((el)=>{
         let registerDate = el.slice(0,10).split('.').map(el=>+el)
         registerDate[2]+= +termsObj[el[11]]-1
@@ -31,10 +32,9 @@ function solution(today, terms, privacies) {
         }
         return el.join('')
     })
-    
+    // 3. 만약 현재 날짜보다 더 크다면 해당 인덱스를 리턴한다
     const numberToday = +(today.split('.').join(''))
     const result = dateCalculated.map((el,idx)=>{
-        
         if(+el<numberToday){
             return idx+1
         }else{
@@ -42,7 +42,6 @@ function solution(today, terms, privacies) {
         }
     })
     return result.filter((el)=>el)
-    // 2. privacies에서 현재날짜에서 곱한 28*개월 수를 카운트한다. 카운트한 숫자를 확인하면서 날짜를 올린다.
-    // 3. 만약 현재 날짜보다 더 크다면 해당 인덱스를 리턴한다
+
     
 }
