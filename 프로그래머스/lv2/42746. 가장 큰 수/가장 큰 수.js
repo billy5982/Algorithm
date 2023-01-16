@@ -1,4 +1,6 @@
 function solution(numbers) {
+    // 핵심 : sort 시 2개의 숫자를 조합했을 떄, ex)2,10 210,102가 나온다 이중 큰수를 리턴하면된다. 2를 리턴하면 [2,10] 이 된다.
+    // 3,10 => 310, 103 3,10 3,2 => 32,23 => 3,2
     let arr = numbers.map(String)
     arr = arr.sort((a,b)=>{
         if(a+b>b+a){
