@@ -2,8 +2,9 @@ function solution(tickets){
     tickets.sort()
     let vis = Array(tickets.length).fill(false);
     let answer =[];
+    
     function dfs(cur,cnt,path){
-        if(cnt===tickets.length && answer.length ===0){
+        if(cnt===tickets.length && answer.length === 0){
             answer = path
             return  
         }
