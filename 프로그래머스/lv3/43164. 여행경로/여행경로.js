@@ -4,12 +4,15 @@ function solution(tickets){
     let answer =[];
     
     function dfs(cur,cnt,path){
+        // console.log(path)
         if(cnt===tickets.length && answer.length === 0){
             answer = path
             return  
         }
+                 
         for(let i=0; i<tickets.length; i++){
             if(vis[i])continue;
+            // 만족하는 조건이 없다면 For문이 끝까지 돌아버리기 때문에 breakCase 역활을 하게 된다.
             if(tickets[i][0]===cur){
                 vis[i] = true
                 dfs(tickets[i][1],cnt+1,[...path,tickets[i][1]])
