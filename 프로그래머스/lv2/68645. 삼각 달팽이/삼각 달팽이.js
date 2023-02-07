@@ -1,23 +1,18 @@
 
 function solution(n) {
-   const numArr = [];
-  
-    // 0으로 채워진 삼각달팽이의 틀(2차원 배열)을 만들기
-    for(let i = 1; i <= n; i++){
-        numArr.push(new Array(i).fill(0));
+    const axis = []
+    for(let i = 1; i<=n; i++){
+        axis.push(new Array(i).fill(0))
     }
-  
-    let row=-1, col=0;
-  
-    // 각 배열에 채울 값
-    let curNum = 1;
-  
-    for(let i = n; i > 0; i-=3){
-        for(let j = 0; j < i ; j++) {numArr[++row][col] = curNum++;}
-        for(let j = 0; j < i-1 ; j++) {numArr[row][++col] = curNum++;}
-        for(let j = 0; j < i-2 ; j++) {numArr[--row][--col] = curNum++;}
+    let cnt = 1;
+    let y = -1 , x = 0;
+    // 싸이클은 하단, 우측, 우-좌 하-상 순으로 돈다 n/2번 도는 것이라 생각한다.
+    // 하단으로 내려가는 시작점은 i가 기준이다.
+    for(let i = n; i>0; i-=3){
+        for(let j = 0; j<i; j++){axis[++y][x] = cnt++}
+        for(let j = 0; j<i-1; j++){axis[y][++x] = cnt++;}
+        for(let j =0; j<i-2; j++){axis[--y][--x] = cnt++;}
     }
-   
-    // 2차원 배열을 1차원 배열로 변경해서 반환해야함.
-    return numArr.flat();
+    
+    return axis.flat()
 }
