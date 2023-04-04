@@ -10,6 +10,7 @@ const input = fs
   다리가 서로 크로스 되면 안된다.
   N과 M의 경우의 수를 구하는 공식은 nCr 인데 => n! / r!(n-r)! 처럼 표시할 수 있다.
   팩토리얼 함수가 필요하다.
+  https://st-lab.tistory.com/159#%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98
 */
 const sol = (input) => {
   const N = input.shift();
