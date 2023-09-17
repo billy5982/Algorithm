@@ -39,18 +39,18 @@ function checkPair(str){
         }
         if(cnt<0){
             return false
-            break;
         }
     }
     return true
 }
 
 function solution(p) {
-    if(!p) return '';
+    
     // w가 균형잡힌 문자열이라면 다음 과정을 통해 올바른 괄호 문자열로 바꿀수 있다.
     // 두 균형잡힌 괄호열 u,v로 분리
     // u는 균형잡힌 괄호 문자열 v = 빈문자열이 될수 있음
     function recursive(pp){
+        if(!pp) return '';
         let count = 0;
         let u = '', v = ''
         for(let i = 0 ; i<pp.length; i++){
@@ -66,15 +66,16 @@ function solution(p) {
             }
         }
         let checkU = checkPair(u)
+        
         if(checkU){
             return u+recursive(v)
         }else{
             let str =`(${recursive(v)})`
-            for(let i = 1; i<u.length; i++){
+            for(let i = 1; i<u.length-1; i++){
                 u[i] === "(" ? (str += ")") : (str += "(");
             }
             return str
         }
     }
-    return recursive(p)
+   return (recursive(p))
 }
